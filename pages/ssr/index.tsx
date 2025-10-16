@@ -3,7 +3,7 @@ import { DemoItem } from "@/interfaces/Demo.interface";
 import { fetchMockData } from "@/mocks/mock";
 
 export async function getServerSideProps() {
-    const items = await fetchMockData;
+    const items = await fetchMockData();
     return { props: { items } };
 }
 
