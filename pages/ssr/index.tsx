@@ -1,4 +1,6 @@
-import DemoList from "@/components/DemoList";
+import Footer from "@/components/Footer";
+import Header from "@/components/Header";
+import List from "@/components/List";
 import { DemoItem } from "@/interfaces/Demo.interface";
 import { fetchMockData } from "@/mocks/mock";
 
@@ -9,9 +11,10 @@ export async function getServerSideProps() {
 
 const SSRPage = ({ items }: { items: DemoItem[] }) => {
     return (
-        <div>
-            <h1>Server-Side Rendered Page</h1>
-            <DemoList items={items} />
+       <div className="min-h-screen bg-base-200">
+            <Header name="SSR" />
+            <List items={items} renderMode="SSR" />
+            <Footer />
         </div>
     );
 }

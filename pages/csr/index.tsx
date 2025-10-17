@@ -1,4 +1,6 @@
-import DemoList from "@/components/DemoList";
+import Footer from "@/components/Footer";
+import Header from "@/components/Header";
+import List from "@/components/List";
 import { DemoItem } from "@/interfaces/Demo.interface";
 import { fetchMockData } from "@/mocks/mock";
 import { useEffect, useState } from "react";
@@ -12,14 +14,10 @@ const CSRPage = () => {
     }, []);
 
     return (
-        <div>
-            <h1>Client-Side Rendered Page</h1>
-
-            {items.length === 0 ? (
-                <p>Loading...</p>
-            ) : (
-                <DemoList items={items} />
-            )}
+        <div className="min-h-screen bg-base-200">
+            <Header name="CSR" />
+            <List items={items} />
+            <Footer />
         </div>
     );
 }
