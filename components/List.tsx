@@ -30,8 +30,17 @@ const List = ({ items, renderMode = 'CSR' }: ListProps) => {
     };
 
     return (
-        <div className="min-h-screen bg-base-200">
+        <div className="min-h-screen bg-base-200 pt-4">
             <div className="container mx-auto px-4 lg:px-8 pb-10">
+                <div className="flex justify-between items-center mb-6">
+                    <h2 className="text-3xl font-bold text-base-content">
+                        Product Listings
+                    </h2>
+                    <div className="badge badge-lg badge-outline">
+                        {renderMode} Mode
+                    </div>
+                </div>
+
                 <div className="stats shadow mb-8 w-full">
                     <div className="stat">
                         <div className="stat-figure text-primary">
@@ -83,16 +92,7 @@ const List = ({ items, renderMode = 'CSR' }: ListProps) => {
                     </div>
                 </div>
 
-                <div className="flex justify-between items-center mb-6">
-                    <h2 className="text-3xl font-bold text-base-content">
-                        Product Listings
-                    </h2>
-                    <div className="badge badge-lg badge-outline">
-                        {renderMode} Mode
-                    </div>
-                </div>
-
-                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6">
+                <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6">
                     {items.map((item, index) => (
                         <div 
                             key={item.id} 
@@ -105,7 +105,7 @@ const List = ({ items, renderMode = 'CSR' }: ListProps) => {
                                     width={400}
                                     height={300}
                                     className="w-full h-48 object-cover"
-                                    priority={index < 8}
+                                    priority={index < 10}
                                     onLoad={handleImageLoad}
                                     placeholder="blur"
                                     blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAABAAEDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAhEAACAQMDBQAAAAAAAAAAAAABAgMABAUGIWEREiMxUf/EABUBAQEAAAAAAAAAAAAAAAAAAAMF/8QAGhEAAgIDAAAAAAAAAAAAAAAAAAECEgMRkf/aAAwDAQACEQMRAD8AltJagyeH0AthI5xdrLcNM91BF5pX2HaH9bcfaSXWGaRmknyJckliyjqTzSlT54b6bk+h0R//2Q=="
@@ -117,22 +117,16 @@ const List = ({ items, renderMode = 'CSR' }: ListProps) => {
                                 </h3>
                                 <div className="flex justify-between items-center mt-2">
                                     <p className="text-lg font-bold text-error">${item.price}</p>
-                                    <div className="text-xs text-base-content/60">ID: {item.id}</div>
-                                </div>
-                                <div className="card-actions justify-end mt-3">                                    <button 
-                                    className="btn btn-primary btn-sm w-full"
+                                    <button className="btn btn-primary btn-sm"
                                     onClick={() => {
                                         console.log(`Clicked product ${item.id} at ${performance.now()}ms`);
                                     }}
-                                >
-                                        Add to Cart
-                                    </button>
+                                    > Buy </button>
                                 </div>
                             </div>
                         </div>
                     ))}
                 </div> 
-                
             </div>
         </div>
     );

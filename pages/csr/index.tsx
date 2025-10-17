@@ -15,7 +15,7 @@ const CSRPage = () => {
 
     return (
         <div className="min-h-screen bg-base-200">
-            <Header name="CSR" />
+            {/* <Header name="CSR" /> */}
             <List items={items} />
             <Footer />
         </div>

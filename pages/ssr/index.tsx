@@ -12,7 +12,7 @@ export async function getServerSideProps() {
 const SSRPage = ({ items }: { items: DemoItem[] }) => {
     return (
        <div className="min-h-screen bg-base-200">
-            <Header name="SSR" />
+            {/* <Header name="SSR" /> */}
             <List items={items} renderMode="SSR" />
             <Footer />
         </div>
