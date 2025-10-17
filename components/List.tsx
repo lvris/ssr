@@ -100,7 +100,8 @@ const List = ({ items, renderMode = 'CSR' }: ListProps) => {
                             data-testid={`product-card-${item.id}`}
                         >                            <figure className="relative">
                                 <Image 
-                                    src={`https://picsum.photos/id/${item.id}/400/300`} 
+                                    // src={`https://picsum.photos/id/${item.id}/400/300`} 
+                                    src={`/${item.id}.jpg`}
                                     alt={`Product ${item.id}`}
                                     width={400}
                                     height={300}
