@@ -1,5 +1,6 @@
 import { DemoItem } from "@/interfaces/Demo.interface";
 import { useState, useEffect, useRef } from "react";
+import Image from "next/image";
 
 interface ListProps {
     items: DemoItem[];
@@ -26,10 +27,6 @@ const List = ({ items, renderMode = 'CSR' }: ListProps) => {
 
     const handleImageLoad = () => {
         setImageLoadCount(prev => prev + 1);
-    };
-
-    const handleImageError = (e: any) => {
-        e.target.src = `https://placehold.co/400x300?text=Image+Not+Found`;
     };
 
     return (
@@ -101,15 +98,17 @@ const List = ({ items, renderMode = 'CSR' }: ListProps) => {
                             key={item.id} 
                             className="card w-full bg-base-100 shadow-lg hover:shadow-xl transition-shadow duration-200"
                             data-testid={`product-card-${item.id}`}
-                        >
-                            <figure className="relative">
-                                <img 
+                        >                            <figure className="relative">
+                                <Image 
                                     src={`https://picsum.photos/id/${item.id}/400/300`} 
                                     alt={`Product ${item.id}`}
+                                    width={400}
+                                    height={300}
                                     className="w-full h-48 object-cover"
-                                    loading={index < 8 ? "eager" : "lazy"}
+                                    priority={index < 8}
                                     onLoad={handleImageLoad}
-                                    onError={handleImageError}
+                                    placeholder="blur"
+                                    blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAABAAEDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAhEAACAQMDBQAAAAAAAAAAAAABAgMABAUGIWEREiMxUf/EABUBAQEAAAAAAAAAAAAAAAAAAAMF/8QAGhEAAgIDAAAAAAAAAAAAAAAAAAECEgMRkf/aAAwDAQACEQMRAD8AltJagyeH0AthI5xdrLcNM91BF5pX2HaH9bcfaSXWGaRmknyJckliyjqTzSlT54b6bk+h0R//2Q=="
                                 /> 
                             </figure>
                             <div className="card-body p-4">
