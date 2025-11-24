@@ -1,0 +1,9 @@
+.container
+{
+    display: grid;
+    grid-template-areas:
+        "hero"
+        "featured"
+        "services";
+    gap: 300px;
+}

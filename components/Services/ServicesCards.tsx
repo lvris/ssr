@@ -1,35 +1,33 @@
 import {useFilterContext} from "@/util/filter_context";
 import {services} from "@/mocks/Services/data";
+import styles from "./ServiceSection.module.css";
 
 export const ServicesCards = () =>
 {
   const {updateFilters, handleClickFromServices, clearFilters} = useFilterContext()
 
   return (
-    <div className="services-center">
+    <div className={styles.cardContainer}>
       {services.map(({id, icon, title, text}) =>
       {
         return (
-          <article key={id} className="service">
-            <span className='icon'>{icon}</span>
-            <h4>{title}</h4>
+          <div key={id} className={styles.card}>
+            <span className={styles.icon}>{icon}</span>
             <a href="/csr">
               <button
-                className="btn"
-                type="button"
-                name="home-page-category"
+                className={styles.btn}
                 value={title}
-                onClick={e =>
+                onClick={event =>
                 {
                   clearFilters()
                   handleClickFromServices()
-                  updateFilters(e)
+                  updateFilters(event)
                 }}
               >
-                Browse for {text}
+                Browse {text}
               </button>
             </a>
-          </article>
+          </div>
         )
       })}
     </div>

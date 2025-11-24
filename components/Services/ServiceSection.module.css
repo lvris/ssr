@@ -1,0 +1,80 @@
+.container
+{
+    display: grid;
+    grid-template-areas:
+        "header"
+        "content";
+
+    gap: 30px;
+    padding-top: 40px;
+
+    background-color: #5a3119;
+
+    .header
+    {
+        text-align: center;
+
+        text-transform: capitalize;
+        font-size: 2.5em;
+
+        color: #dfd8c8;
+    }
+}
+
+.cardContainer
+{
+    width: 100vw;
+
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+
+    gap: 20vw;
+    padding-left: 10vw;
+    padding-right: 10vw;
+
+    .card
+    {
+        display: grid;
+        grid-template-columns:
+            "icon"
+            "btn";
+
+        gap: 2fr;
+
+        .icon
+        {
+            display: table;
+
+            margin: 0 auto;
+
+            font-size: 100px;
+
+            color: #91684a;
+        }
+
+        .btn
+        {
+            height: 100%;
+            width: 100%;
+
+            padding: 15px 32px;
+
+            border-radius: 12px;
+            border: 2px solid #6b5200;
+
+            text-align: center;
+
+            color: #dfd8c8;
+            background-color: #a39274;
+
+            font-size: 20px;
+            cursor: pointer;
+        }
+
+        .btn:hover
+        {
+            transition: 0.3s ease;
+            background-color: rgb(121, 119, 39);
+        }
+    }
+}

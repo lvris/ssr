@@ -1,11 +1,11 @@
 import heroImg from "@/assets/hero_image.jpg";
+import styles from "./HeroSection.module.css";
 
 export const HeroImage = () =>
 {
 	return (
 		<article className="img-container">
-			<img src={heroImg.src} alt="hero" className="main-img" />
-			{/* insert one more image here */}
+			<img src={heroImg.src} alt="hero" className={styles.image}/>
 		</article>
 	);
 }

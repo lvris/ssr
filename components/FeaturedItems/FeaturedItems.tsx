@@ -1,45 +1,30 @@
 import React from "react";
-import styled from "styled-components";
 import {FeaturedItemsHeader} from "@/components/FeaturedItems/FeaturedItemsHeader";
 import {FeaturedItemsCards} from "@/components/FeaturedItems/FeaturedItemsCards";
 import {FeaturedItemsButton} from "@/components/FeaturedItems/FeaturedItemsButton";
+import styles from "./FeaturedItems.module.css";
 
 const FeaturedItems = () =>
 {
   return (
-    <Wrapper className="section">
-      <FeaturedItemsHeader />
-      <FeaturedItemsCards />
-      <FeaturedItemsButton />
-    </Wrapper>
+	<div className={styles.container}>
+		<div className={styles.header}>
+			<h2>
+				<FeaturedItemsHeader />
+			</h2>
+		</div>
+		<div className={styles.content}>
+			<h3>
+				<FeaturedItemsCards />
+			</h3>
+		</div>
+		<div className={styles.footer}>
+			<h4>
+				<FeaturedItemsButton />
+			</h4>
+		</div>
+	</div>
   );
 }
 
-const Wrapper = styled.section`
-  background: var(--clr-grey-10);
-  .featured
-  {
-    margin: 4rem auto;
-    display: grid;
-    gap: 2.5rem;
-    img
-    {
-      height: 225px;
-    }
-  }
-  .btn
-  {
-    display: block;
-    width: 148px;
-    margin: 0 auto;
-    text-align: center;
-  }
-  @media (min-width: 576px)
-  {
-    .featured
-    {
-      grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
-    }
-  }
-`
 export default FeaturedItems

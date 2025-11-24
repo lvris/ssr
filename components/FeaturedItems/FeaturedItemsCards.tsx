@@ -2,6 +2,7 @@ import React, {useEffect, useState} from "react";
 import Item from "@/components/FeaturedItems/ItemClass";
 import {DemoItem} from "@/interfaces/Demo.interface";
 import {fetchMockData} from "@/mocks/mock";
+import styles from "./FeaturedItems.module.css";
 
 export const FeaturedItemsCards = () =>
 {
@@ -16,10 +17,12 @@ export const FeaturedItemsCards = () =>
   let randItemArr = getRandomItemArr(itemArr, 3);
 
   return (
-    <div className='section-center featured'>
+    <div className={styles.cards}>
       {randItemArr && randItemArr.map(itemElem =>
           (
-            <Item key={itemElem.id} item={itemElem} />
+            <div className="card w-full bg-base-100 shadow-lg hover:shadow-xl transition-shadow duration-200">
+              <Item key={itemElem.id} item={itemElem} />
+            </div>
           )
         )
       }

@@ -1,0 +1,84 @@
+.container
+{
+    display: grid;
+
+    grid-template-areas:
+        "container1 heroImage";
+    grid-template-columns: 2fr 2fr;
+
+    gap: 10px;
+    padding-left: 200px;
+    padding-right: 100px;
+    padding-bottom: 100px;
+    padding-top: 100px;
+
+    background-color: rgb(204, 228, 232);
+
+    .container1
+    {
+        display: grid;
+
+        grid-template-areas:
+            "heroText"
+            "heroButton";
+        grid-template-rows: 1fr 1fr;
+
+        padding-top: 100px;
+
+        div
+        {
+            background-color: rgb(204, 228, 232);
+            padding: 10px;
+        }
+
+        .heroText
+        {
+            font-size:2em;
+
+            color: rgb(11, 2, 58);
+        }
+    }
+}
+
+.image
+{
+    border-radius: 50%;
+}
+
+.btnContainer
+{
+    display: grid;
+
+    grid-template-areas:
+        "btn btn";
+
+    gap: 100px;
+
+    vertical-align: top;
+    text-align: center;
+
+    .btn
+    {
+        height: 100%;
+        width: 100%;
+
+        padding: 15px 32px;
+
+        border-radius: 16px;
+        border: 2px solid rgb(11, 2, 58);
+
+        text-align: center;
+
+        color: #1a7b94;
+        background-color: #d0bdf4;
+
+        font-size: 20px;
+        cursor: pointer;
+    }
+
+    .btn:hover
+    {
+        transition: 0.3s ease;
+        background-color: #8458B3;
+    }
+}
