@@ -16,7 +16,7 @@ export const options = {
 export default function () {
     const BASE_URL = 'http://localhost:3000';
 
-    let resCSR = http.get(`${BASE_URL}/ssr`);
+    let resSSR = http.get(`${BASE_URL}/ssr`);
 
     sleep(1);
 }
