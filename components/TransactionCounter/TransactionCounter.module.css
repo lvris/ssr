@@ -1,0 +1,23 @@
+.container
+{
+    display: grid;
+    grid-template-areas:
+        "header"
+        "content";
+
+    gap: 30px;
+    padding-top: 40px;
+    padding-bottom: 100px;
+
+    background-color: #35520f;
+
+    .header
+    {
+        text-align: center;
+
+        text-transform: uppercase;
+        font-size: 2.5em;
+
+        color: #cec6a2;
+    }
+}

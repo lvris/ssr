@@ -63,4 +63,15 @@
 
     text-align: center;
     font-size: 1.5em;
+
+    .searchIcon
+    {
+        display: table;
+
+        margin: 0 auto;
+
+        font-size: 30px;
+
+        color: #505050;
+    }
 }

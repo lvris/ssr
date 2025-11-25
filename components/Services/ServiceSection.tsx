@@ -1,5 +1,5 @@
-import { ServicesCards } from "./ServicesCards";
-import { ServicesHeader } from "./ServicesHeader";
+import {ServicesCards} from "./ServicesCards";
+import {ServicesHeader} from "./ServicesHeader";
 import styles from "./ServiceSection.module.css";
 
 const ServiceSection = () =>

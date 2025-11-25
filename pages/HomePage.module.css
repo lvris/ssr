@@ -4,6 +4,29 @@
     grid-template-areas:
         "hero"
         "featured"
-        "services";
-    gap: 300px;
+        "counter"
+        "services"
+        "dock";
+
+    .hero
+    {
+        padding-bottom: 150px;
+    }
+
+    .counter
+    {
+        padding-bottom: 150px;
+    }
+
+    .featured
+    {
+        padding-bottom: 150px;
+    }
+    .dock
+    {
+        position: fixed;
+
+        top: 90%;
+        right: 50%;
+    }
 }

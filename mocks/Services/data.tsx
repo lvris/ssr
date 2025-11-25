@@ -1,4 +1,4 @@
-import {HiMiniTag, HiMusicalNote, HiRocketLaunch} from 'react-icons/hi2'
+import {HiMiniTag, HiMusicalNote, HiRocketLaunch} from "react-icons/hi2";
 
 export const services =
 [

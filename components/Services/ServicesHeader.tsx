@@ -2,7 +2,7 @@ export const ServicesHeader = () =>
 {
 	return (
 		<article>
-			Shop by category:
+			shop by category
 		</article>
 	)
 }
