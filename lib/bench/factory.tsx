@@ -1,8 +1,8 @@
-import React, { ComponentType, useEffect, useState } from 'react';
-import { useRouter } from 'next/router';
-import { GetServerSideProps, GetStaticProps } from 'next';
-import { BenchmarkProps, BenchMeta, RenderMode } from './types';
-import BenchHeader from '@/components/Benchmark/BenchHeader';
+import React, { ComponentType, useEffect, useState } from "react";
+import { useRouter } from "next/router";
+import { GetServerSideProps, GetStaticProps } from "next";
+import { BenchmarkProps, BenchMeta } from "./types";
+import BenchHeader from "@/components/Benchmark/BenchHeader";
 
 /**
  * Default adapter - passthrough props
@@ -24,10 +24,12 @@ export function createSSRPage<T>(
     </>
   );
 
-  const getServerSideProps: GetServerSideProps<BenchmarkProps<T>> = async () => {
+  const getServerSideProps: GetServerSideProps<
+    BenchmarkProps<T>
+  > = async () => {
     const { items } = await meta.serverFetch();
     return {
-      props: { items, renderMode: 'SSR' }
+      props: { items, renderMode: "SSR" },
     };
   };
 
@@ -52,7 +54,7 @@ export function createSSGPage<T>(
   const getStaticProps: GetStaticProps<BenchmarkProps<T>> = async () => {
     const { items } = await meta.serverFetch();
     return {
-      props: { items, renderMode: 'SSG', buildTime: new Date().toISOString() }
+      props: { items, renderMode: "SSG", buildTime: new Date().toISOString() },
     };
   };
 
@@ -78,8 +80,8 @@ export function createISRPage<T>(
   const getStaticProps: GetStaticProps<BenchmarkProps<T>> = async () => {
     const { items } = await meta.serverFetch();
     return {
-      props: { items, renderMode: 'ISR', buildTime: new Date().toISOString() },
-      revalidate
+      props: { items, renderMode: "ISR", buildTime: new Date().toISOString() },
+      revalidate,
     };
   };
 
@@ -102,22 +104,21 @@ export function createCSRPage<T>(
     useEffect(() => {
       if (!router.isReady) return;
 
-      meta.clientFetch()
-        .then(({ items }) => {
-          setItems(items);
-          setLoading(false);
-        });
+      meta.clientFetch().then(({ items }) => {
+        setItems(items);
+        setLoading(false);
+      });
     }, [router.isReady]);
 
     if (loading) {
       return (
-          <div className="flex justify-center items-center min-h-screen">
-            <span className="loading loading-spinner loading-lg"></span>
-          </div>
+        <div className="flex justify-center items-center min-h-screen">
+          <span className="loading loading-spinner loading-lg"></span>
+        </div>
       );
     }
 
-    const props: BenchmarkProps<T> = { items, renderMode: 'CSR' };
+    const props: BenchmarkProps<T> = { items, renderMode: "CSR" };
     return (
       <>
         <BenchHeader renderMode="CSR" />

@@ -1,28 +1,35 @@
-import Link from 'next/link';
-import { useRouter } from 'next/router';
-import { RenderMode } from '@/lib/bench/types';
+import Link from "next/link";
+import { useRouter } from "next/router";
+import { RenderMode } from "@/lib/bench/types";
 
-const RENDER_MODES: RenderMode[] = ['CSR', 'SSR', 'SSG', 'ISR'];
+const RENDER_MODES: RenderMode[] = ["CSR", "SSR", "SSG", "ISR"];
 
 const MODE_COLORS: Record<RenderMode, string> = {
-  CSR: 'btn-error',
-  SSR: 'btn-info',
-  SSG: 'btn-success',
-  ISR: 'btn-warning',
+  CSR: "btn-error",
+  SSR: "btn-info",
+  SSG: "btn-success",
+  ISR: "btn-warning",
 };
 
 const MODE_DESC: Record<RenderMode, string> = {
-  CSR: 'Client-Side Rendered',
-  SSR: 'Server-Side Rendered',
-  SSG: 'Static Site Generated',
-  ISR: 'Incremental Static Regeneration',
+  CSR: "Client-Side Rendered",
+  SSR: "Server-Side Rendered",
+  SSG: "Static Site Generated",
+  ISR: "Incremental Static Regeneration",
 };
 
-export default function BenchHeader({ renderMode, buildTime }: { renderMode: RenderMode; buildTime?: string }) {
+export default function BenchHeader({
+  renderMode,
+  buildTime,
+}: {
+  renderMode: RenderMode;
+  buildTime?: string;
+}) {
   const router = useRouter();
-  const pathParts = router.pathname.split('/');
+  const pathParts = router.pathname.split("/");
   const componentName = pathParts[2];
-  const getModePath = (mode: RenderMode) => `/bench/${componentName}/${mode.toLowerCase()}`;
+  const getModePath = (mode: RenderMode) =>
+    `/bench/${componentName}/${mode.toLowerCase()}`;
 
   return (
     <div className="flex items-center gap-4 bg-base-200 px-4 py-3">
@@ -32,7 +39,7 @@ export default function BenchHeader({ renderMode, buildTime }: { renderMode: Ren
             key={mode}
             href={getModePath(mode)}
             className={`join-item btn btn-sm ${
-              mode === renderMode ? MODE_COLORS[mode] : 'btn-ghost'
+              mode === renderMode ? MODE_COLORS[mode] : "btn-ghost"
             }`}
           >
             {mode}

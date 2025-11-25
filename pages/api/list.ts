@@ -1,6 +1,6 @@
-import type { NextApiRequest, NextApiResponse } from 'next';
-import { fetchMockData } from '@/mocks/mock';
-import { DemoItem } from '@/interfaces/Demo.interface';
+import type { NextApiRequest, NextApiResponse } from "next";
+import { fetchMockData } from "@/mocks/mock";
+import { DemoItem } from "@/interfaces/Demo.interface";
 
 export default async function handler(
   req: NextApiRequest,
