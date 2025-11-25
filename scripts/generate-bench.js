@@ -1,5 +1,6 @@
-const fs = require("fs").promises;
-const path = require("path");
+import fs from "fs/promises";
+import path from "path";
+import { fileURLToPath } from "url";
 
 const BENCH_TARGETS_DIR = "components/BenchTargets";
 const PAGES_OUT_DIR = "pages/bench";
@@ -38,36 +39,29 @@ function generateShimContent(componentPath, mode) {
     csr: "createCSRPage",
   }[mode];
 
-  if (mode === "ssr") {
-    return `// Auto-generated benchmark shim - DO NOT EDIT
+  const prefix = `// Auto-generated shim - DO NOT EDIT
 import Component, { benchMeta } from '${componentPath}';
 import { ${factoryFn} } from '@/lib/bench/factory';
+`;
 
+  if (mode === "ssr") {
+    return `${prefix}
 const { Page, getServerSideProps } = ${factoryFn}(Component, benchMeta);
-
 export default Page;
 export { getServerSideProps };
 `;
   }
 
   if (mode === "csr") {
-    return `// Auto-generated benchmark shim - DO NOT EDIT
-import Component, { benchMeta } from '${componentPath}';
-import { ${factoryFn} } from '@/lib/bench/factory';
-
+    return `${prefix}
 const { Page } = ${factoryFn}(Component, benchMeta);
-
 export default Page;
 `;
   }
 
-  // SSG / ISR - no getStaticPaths needed for index.tsx
-  return `// Auto-generated benchmark shim - DO NOT EDIT
-import Component, { benchMeta } from '${componentPath}';
-import { ${factoryFn} } from '@/lib/bench/factory';
-
+  // SSG / ISR
+  return `${prefix}
 const { Page, getStaticProps } = ${factoryFn}(Component, benchMeta);
-
 export default Page;
 export { getStaticProps };
 `;
@@ -84,7 +78,7 @@ async function cleanGeneratedPages(repoRoot) {
 }
 
 async function generate() {
-  const repoRoot = path.resolve(__dirname, "..");
+  const repoRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 
   // 1. Clean old generated pages
   await cleanGeneratedPages(repoRoot);
@@ -121,10 +115,7 @@ async function generate() {
   console.log("\n🎉 Generation complete!");
   console.log("\nGenerated routes:");
   for (const comp of components) {
-    console.log(`  /bench/${comp.name}/csr`);
-    console.log(`  /bench/${comp.name}/ssr`);
-    console.log(`  /bench/${comp.name}/ssg`);
-    console.log(`  /bench/${comp.name}/isr`);
+    console.log(`  /bench/${comp.name}/[mode]`);
   }
 }
 

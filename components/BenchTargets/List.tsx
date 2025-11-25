@@ -1,9 +1,10 @@
-import { BenchmarkProps, BenchMeta } from '@/lib/bench/types';
-import { fetchMockData } from '@/mocks/mock';
+import { BenchmarkProps, BenchMeta } from "@/lib/bench/types";
+import { fetchMockData } from "@/mocks/mock";
 import { DemoItem } from "@/interfaces/Demo.interface";
 import Image from "next/image";
 
-const BLUR_DATA_URL = "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAABAAEDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAhEAACAQMDBQAAAAAAAAAAAAABAgMABAUGIWEREiMxUf/EABUBAQEAAAAAAAAAAAAAAAAAAAMF/8QAGhEAAgIDAAAAAAAAAAAAAAAAAAECEgMRkf/aAAwDAQACEQMRAD8AltJagyeH0AthI5xdrLcNM91BF5pX2HaH9bcfaSXWGaRmknyJckliyjqTzSlT54b6bk+h0R//2Q==";
+const BLUR_DATA_URL =
+  "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAABAAEDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAhEAACAQMDBQAAAAAAAAAAAAABAgMABAUGIWEREiMxUf/EABUBAQEAAAAAAAAAAAAAAAAAAAMF/8QAGhEAAgIDAAAAAAAAAAAAAAAAAAECEgMRkf/aAAwDAQACEQMRAD8AltJagyeH0AthI5xdrLcNM91BF5pX2HaH9bcfaSXWGaRmknyJckliyjqTzSlT54b6bk+h0R//2Q==";
 
 interface ProductCardProps {
   item: DemoItem;
@@ -29,7 +30,10 @@ function ProductCard({ item, priority = false }: ProductCardProps) {
         />
       </figure>
       <div className="card-body p-4">
-        <h3 className="card-title text-base font-semibold line-clamp-2" title={item.name}>
+        <h3
+          className="card-title text-base font-semibold line-clamp-2"
+          title={item.name}
+        >
           {item.name}
         </h3>
         <div className="flex justify-between items-center mt-2">
@@ -77,7 +81,7 @@ export const benchMeta: BenchMeta<DemoItem> = {
     return { items: data };
   },
   clientFetch: async () => {
-    const res = await fetch('/api/list');
+    const res = await fetch("/api/list");
     const data = await res.json();
     return { items: data };
   },
