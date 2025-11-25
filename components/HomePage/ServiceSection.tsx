@@ -2,7 +2,7 @@ import { services } from "@/mocks/Services/data";
 
 const ServiceSection = () => {
   return (
-    <div className="flex-1 bg-amber-900 p-6 flex flex-col items-center justify-center text-center">
+    <div className="flex-1 min-w-0 bg-amber-900 p-6 flex flex-col items-center justify-center text-center">
       <h2 className="text-sm uppercase tracking-wider text-amber-200 mb-4">
         Shop by Category
       </h2>

@@ -17,7 +17,7 @@ const TransactionCounter = () => {
   }, []);
 
   return (
-    <div className="flex-1 bg-emerald-800 p-6 flex flex-col items-center justify-center text-center">
+    <div className="flex-1 min-w-0 bg-emerald-800 p-6 flex flex-col items-center justify-center text-center">
       <h2 className="text-sm uppercase tracking-wider text-emerald-200 mb-3">
         Purchases Made Today
       </h2>

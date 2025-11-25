@@ -7,13 +7,10 @@ import TransactionCounter from "@/components/HomePage/TransactionCounter";
 import ServiceSection from "@/components/HomePage/ServiceSection";
 import HomepageDock from "@/components/HomePage/HomepageDock";
 
-// Homepage with high-interactivity product grid
-// Uses real product data to test hydration performance
-
 export default function Home({ items, renderMode }: BenchmarkProps<DemoItem>) {
   return (
-    <div className="min-h-screen bg-base-100">
-      <div className="flex h-[45vh] min-h-[280px]">
+    <div className="min-h-screen bg-base-100 overflow-x-hidden">
+      <div className="flex h-[45vh] min-h-[280px] w-full overflow-hidden">
         <HeroSection />
         <TransactionCounter />
         <ServiceSection />
