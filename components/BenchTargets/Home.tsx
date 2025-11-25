@@ -1,34 +1,43 @@
 import { BenchmarkProps, BenchMeta } from "@/lib/bench/types";
-import HeroSection from "@/components/HomepageHero/HeroSection";
-import FeaturedItems from "@/components/FeaturedItems/FeaturedItems";
-import TransactionCounter from "@/components/TransactionCounter/TransactionCounter";
-import ServiceSection from "@/components/Services/ServiceSection";
-import HomepageDock from "@/components/HomepageDock/HomepageDock";
+import { DemoItem } from "@/interfaces/Demo.interface";
+import { fetchMockData } from "@/mocks/mock";
+import HeroSection from "@/components/HomePage/HeroSection";
+import ProductGrid from "@/components/HomePage/ProductGrid";
+import TransactionCounter from "@/components/HomePage/TransactionCounter";
+import ServiceSection from "@/components/HomePage/ServiceSection";
+import HomepageDock from "@/components/HomePage/HomepageDock";
 
-// Home page doesn't need items from server, it's mostly static content
-// We use an empty array as placeholder to satisfy BenchmarkProps
-interface HomeData {
-  placeholder: boolean;
-}
+// Homepage with high-interactivity product grid
+// Uses real product data to test hydration performance
 
-export default function Home({ renderMode }: BenchmarkProps<HomeData>) {
+export default function Home({ items, renderMode }: BenchmarkProps<DemoItem>) {
   return (
-    <div className="min-h-screen">
-      <HeroSection />
-      <FeaturedItems />
-      <TransactionCounter />
-      <ServiceSection />
+    <div className="min-h-screen bg-base-100">
+      <div className="flex h-[45vh] min-h-[280px]">
+        <HeroSection />
+        <TransactionCounter />
+        <ServiceSection />
+      </div>
+
+      <section className="py-4">
+        <ProductGrid items={items} />
+      </section>
+
       <HomepageDock />
     </div>
   );
 }
 
-export const benchMeta: BenchMeta<HomeData> = {
+export const benchMeta: BenchMeta<DemoItem> = {
   serverFetch: async () => {
-    // Home page is mostly static, no real data fetch needed
-    return { items: [{ placeholder: true }] };
+    // Fetch all products for SSR/SSG/ISR
+    const items = await fetchMockData(100);
+    return { items };
   },
   clientFetch: async () => {
-    return { items: [{ placeholder: true }] };
+    // CSR fetches from API
+    const res = await fetch("/api/list");
+    const items = await res.json();
+    return { items };
   },
 };

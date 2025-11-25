@@ -1,6 +1,5 @@
 import {VscHome, VscVmConnect, VscServerProcess, VscCoffee} from "react-icons/vsc";
-import {useState, useEffect} from "react";
-import Dock from "./Dock";
+import Dock from "./Dock"
 
 const HomepageDock = () =>
 {
@@ -13,7 +12,7 @@ const HomepageDock = () =>
   ];
 
   return (
-    <Dock 
+    <Dock
       items={items}
       spring={{damping: 0, stiffness: 0, restDelta: 0}}
       magnification={70}

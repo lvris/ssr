@@ -1,5 +1,3 @@
-'use client';
-
 import {
   motion,
   MotionValue,
@@ -154,7 +152,7 @@ export default function Dock({
   const height = useSpring(heightRow, spring);
 
   return (
-    <motion.div style={{ height, scrollbarWidth: 'none' }} className="mx-2 flex max-w-full items-center">
+    <motion.div style={{ height, scrollbarWidth: 'none' }} className="fixed bottom-0 left-0 right-0 flex justify-center items-end z-50">
       <motion.div
         onMouseMove={({ pageX }) => {
           isHovered.set(1);
@@ -164,7 +162,7 @@ export default function Dock({
           isHovered.set(0);
           mouseX.set(Infinity);
         }}
-        className={`${className} absolute bottom-2 left-1/2 transform -translate-x-1/2 flex items-end w-fit gap-4 rounded-2xl border-neutral-700 border-2 pb-2 px-4`}
+        className={`${className} flex items-end w-fit gap-4 rounded-2xl border-neutral-700 border-2 pb-2 px-4 mb-2 bg-base-100/80 backdrop-blur-sm`}
         style={{ height: panelHeight }}
         role="toolbar"
         aria-label="Application dock"

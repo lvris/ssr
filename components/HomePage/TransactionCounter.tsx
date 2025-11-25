@@ -17,16 +17,16 @@ const TransactionCounter = () => {
   }, []);
 
   return (
-    <div className="flex-1 bg-emerald-800 p-8 flex flex-col items-center justify-center text-center">
-      <h2 className="text-xl uppercase tracking-wider text-emerald-200 mb-6">
+    <div className="flex-1 bg-emerald-800 p-6 flex flex-col items-center justify-center text-center">
+      <h2 className="text-sm uppercase tracking-wider text-emerald-200 mb-3">
         Purchases Made Today
       </h2>
       <Counter
         value={count}
         places={[100, 10, 1]}
-        fontSize={72}
-        padding={6}
-        gap={10}
+        fontSize={48}
+        padding={4}
+        gap={6}
         textColor="white"
         fontWeight={700}
       />
