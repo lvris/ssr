@@ -11,13 +11,6 @@ const MODE_COLORS: Record<RenderMode, string> = {
   ISR: "btn-warning",
 };
 
-const MODE_DESC: Record<RenderMode, string> = {
-  CSR: "Client-Side Rendered",
-  SSR: "Server-Side Rendered",
-  SSG: "Static Site Generated",
-  ISR: "Incremental Static Regeneration",
-};
-
 export default function BenchHeader({
   renderMode,
   buildTime,
@@ -46,11 +39,17 @@ export default function BenchHeader({
           </Link>
         ))}
       </div>
-      <span className="opacity-70">{MODE_DESC[renderMode]}</span>
       {buildTime && (
         <span className="opacity-50 ml-auto">
-          Built: {new Date(buildTime).toLocaleString()}
+          Built: {new Date(buildTime).toLocaleString(undefined, {
+            hour: "2-digit",
+            minute: "2-digit",
+            second: "2-digit",
+          })}
         </span>
+      )}
+      {!buildTime && (
+        <span className="opacity-50 ml-auto">Live Rendered</span>
       )}
     </div>
   );
