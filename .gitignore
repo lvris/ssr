@@ -42,3 +42,6 @@ next-env.d.ts
 
 # public
 /public
+
+# bench pages
+/pages/bench/*
