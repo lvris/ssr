@@ -21,5 +21,9 @@ npm run build
 npm run start
 ```
 
-Then open http://localhost:3000/bench/home/csr to see the benchmark home page.
+Then open following links to see the benchmark page.
+
+- http://localhost:3000/bench/list/csr
+- http://localhost:3000/bench/home/csr
+
 
