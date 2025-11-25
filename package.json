@@ -6,9 +6,10 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start",
+    "start": "next start -p 3333",
+    "lint": "eslint",
     "bench": "node ./scripts/generate-bench.js",
-    "lint": "eslint"
+    "lighthouse": "node ./scripts/lighthouse.js"
   },
   "dependencies": {
     "motion": "12.23.24",
@@ -25,9 +26,12 @@
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "chrome-launcher": "^1.2.1",
     "daisyui": "^5.3.7",
     "eslint": "^9",
     "eslint-config-next": "15.5.5",
+    "lighthouse": "^13.0.1",
+    "puppeteer": "^24.31.0",
     "tailwindcss": "^4",
     "typescript": "^5"
   }

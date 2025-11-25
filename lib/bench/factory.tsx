@@ -111,11 +111,7 @@ export function createCSRPage<T>(
     }, [router.isReady]);
 
     if (loading) {
-      return (
-        <div className="flex justify-center items-center min-h-screen">
-          <span className="loading loading-spinner loading-lg"></span>
-        </div>
-      );
+      return null;
     }
 
     const props: BenchmarkProps<T> = { items, renderMode: "CSR" };
