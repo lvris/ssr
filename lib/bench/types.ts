@@ -22,7 +22,7 @@ export interface BenchMeta<T> {
     /** Client-side data fetching (used by CSR) */
     clientFetch: () => Promise<{ items: T[] }>;
     /** Transform BenchmarkProps to component's actual props (optional) */
-    adapter?: (props: BenchmarkProps<T>) => any;
+    adapter?: (props: BenchmarkProps<T>) => BenchmarkProps<T>;
     /** ISR revalidate interval in seconds, default 60 */
     revalidate?: number;
 }
