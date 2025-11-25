@@ -5,23 +5,6 @@ import Image from "next/image";
 
 const BLUR_DATA_URL = "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAABAAEDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAhEAACAQMDBQAAAAAAAAAAAAABAgMABAUGIWEREiMxUf/EABUBAQEAAAAAAAAAAAAAAAAAAAMF/8QAGhEAAgIDAAAAAAAAAAAAAAAAAAECEgMRkf/aAAwDAQACEQMRAD8AltJagyeH0AthI5xdrLcNM91BF5pX2HaH9bcfaSXWGaRmknyJckliyjqTzSlT54b6bk+h0R//2Q==";
 
-interface HeaderProps {
-  renderMode: string;
-}
-
-function Header({ renderMode }: HeaderProps) {
-  return (
-    <div className="flex justify-between items-center mb-6">
-      <h2 className="text-3xl font-bold text-base-content">
-        Product Listings
-      </h2>
-      <div className="badge badge-lg badge-outline">
-        {renderMode} Mode
-      </div>
-    </div>
-  );
-}
-
 interface ProductCardProps {
   item: DemoItem;
   priority?: boolean;
@@ -63,11 +46,7 @@ function ProductCard({ item, priority = false }: ProductCardProps) {
   );
 }
 
-interface ProductGridProps {
-  items: DemoItem[];
-}
-
-function ProductGrid({ items }: ProductGridProps) {
+function ProductGrid({ items }: { items: DemoItem[] }) {
   return (
     <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6">
       {items.map((item, index) => (
@@ -77,11 +56,15 @@ function ProductGrid({ items }: ProductGridProps) {
   );
 }
 
-export default function List({ items, renderMode = 'CSR' }: BenchmarkProps<DemoItem>) {
+export default function List({ items }: BenchmarkProps<DemoItem>) {
   return (
     <div className="min-h-screen bg-base-200 pt-4">
       <div className="container mx-auto px-4 lg:px-8 pb-10">
-        <Header renderMode={renderMode} />
+        <div className="flex justify-between items-center mb-6">
+          <h2 className="text-3xl font-bold text-base-content">
+            Product Listings
+          </h2>
+        </div>
         <ProductGrid items={items} />
       </div>
     </div>
