@@ -32,4 +32,17 @@ Then open following links to see the benchmark page.
 - http://localhost:3333/bench/list/isr
 - http://localhost:3333/bench/home/isr
 
+## Available Scripts
+
+In the project directory, you can run:
+
+```bash
+npm run bundle-size
+npm run lighthouse
+npm run test:k6
+```
+
+- `bundle-size`: Analyze the bundle size of the benchmark pages.
+- `lighthouse`: Run Lighthouse performance tests on the benchmark pages (given by a parameter).
+- `test:k6`: Run load tests using k6 on the benchmark pages (given by a parameter).
 
