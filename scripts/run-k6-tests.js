@@ -125,9 +125,6 @@ async function main() {
     });
   } catch (err) {
     console.error('\nERROR: k6 is not installed!');
-    console.error('\nInstall k6:');
-    console.error('  Windows: choco install k6 or winget install k6.k6');
-    console.error('  Or download from: https://k6.io/docs/get-started/installation/\n');
     process.exit(1);
   }
 
