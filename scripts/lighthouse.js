@@ -102,7 +102,7 @@ async function main() {
     await chrome.kill();
   }
 
-  console.log(`\n✅ Average results (${RUNS} runs) appended to ${CSV_FILE}\n`);
+  console.log(`\nAverage results (${RUNS} runs) appended to ${CSV_FILE}\n`);
 }
 
 main().catch(console.error);

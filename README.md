@@ -23,7 +23,13 @@ npm run start
 
 Then open following links to see the benchmark page.
 
-- http://localhost:3000/bench/list/csr
-- http://localhost:3000/bench/home/csr
+- http://localhost:3333/bench/list/csr
+- http://localhost:3333/bench/home/csr
+- http://localhost:3333/bench/list/ssr
+- http://localhost:3333/bench/home/ssr
+- http://localhost:3333/bench/list/ssg
+- http://localhost:3333/bench/home/ssg
+- http://localhost:3333/bench/list/isr
+- http://localhost:3333/bench/home/isr
 
 

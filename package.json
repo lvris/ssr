@@ -9,7 +9,10 @@
     "start": "next start -p 3333",
     "lint": "eslint",
     "bench": "node ./scripts/generate-bench.js",
-    "lighthouse": "node ./scripts/lighthouse.js"
+    "lighthouse": "node ./scripts/lighthouse.js",
+    "test:k6": "node ./scripts/run-k6-tests.js",
+    "analyze": "node ./scripts/analyze-results.js",
+    "bundle-size": "node ./scripts/analyze-bundles.js"
   },
   "dependencies": {
     "motion": "12.23.24",

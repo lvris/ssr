@@ -108,11 +108,11 @@ async function generate() {
       await fs.writeFile(pagePath, content, "utf8");
     }
     console.log(
-      `✅ Generated routes for ${comp.displayName} (${MODES.length} pages)`
+      `Generated routes for ${comp.displayName} (${MODES.length} pages)`
     );
   }
 
-  console.log("\n🎉 Generation complete!");
+  console.log("\nGeneration complete!");
   console.log("\nGenerated routes:");
   for (const comp of components) {
     console.log(`  /bench/${comp.name}/[mode]`);
